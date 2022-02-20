@@ -63,7 +63,7 @@ ROOT_URLCONF = 'playground.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,8 +125,21 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+# 웹 페이지에서 사용할 정적 파일의 최상위 URL 경로. 실제 파일이나 디렉토리가 아니라 URL로만 존재하는 단위
+# 사용자 마음대로 지정 가능
+# STATIC_ROOT에서 시정된 경로의 파일을 참조한다
 STATIC_URL = '/static/'
+
+# collectstatic를 통해 static 파일들을 모을 장소 지정
+# 각 앱의 static 디렉토리와 STATICFILES_DIRS로 지정된 경로에 있는 파일들을 불러온다
+# 앱의 static 디렉토리의 경우 앱의 이름을 prefix로 붙여 저장한다
+# Django는 이 경로에 관여하지 않는다. 정적 파일을 직접 제공할 웹 서버가 접근한다.
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# app에 종속되어있지 않은 static 파일들을 쓰기 위해 그 위치를 지정해줌
+# 경로 앞에 PREFIX를 추가할 수도 있다.
+STATICFILES_DIRS = [BASE_DIR/"static",]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
