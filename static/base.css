@@ -1,0 +1,10 @@
+.header_box,
+.footer_box {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.header_logo,
+.footer_logo {
+  font-family: "Playfair Display";
+}
