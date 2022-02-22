@@ -3,18 +3,18 @@
 <div style="margin: 2rem; text-align: center">
   <!-- "Playfair Display"가 없으면 대신 cursive를 쓴다-->
   <h1 style="font-family: 'Playfair Display', cursive">Hey aye!</h1>
-  <form action="/account/hello_world/" method="post">
+  <form class="m-3" action="/account/hello_world/" method="post">
     {% csrf_token %}
     <div>
-      <input type="text" name="title" />
+      <input type="text" class="form-control rounded-pill" name="title" />
     </div>
     <div>
-      <input type="submit" class="btn btn-primary" value="Click" />
+      <input type="submit" class="btn btn-dark rounded-pill col-3 mt-3" value="Click" />
     </div>
   </form>
 
   {% if article_list %} {% for article in article_list %}
-  <h1>{{article.title}}</h1>
+  <h6>{{article.title}}</h6>
   {% endfor %} {% endif %}
 </div>
 

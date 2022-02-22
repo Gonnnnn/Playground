@@ -2,12 +2,11 @@
 
 <div style="max-width: 500px; text-align: center; margin: 4rem auto">
   <div class="mb-2">
-    <h4>Sign Up</h4>
+    <h4>User Information Update</h4>
   </div>
-  <form action="{%url 'accountapp:create'%}" method="post">
+  <form action="{%url 'accountapp:update' pk=user.pk%}" method="post">
     {% csrf_token %} {% bootstrap_form form %}
     <input type="submit" class="btn btn-dark rounded-pill col-3 mt-3" />
   </form>
 </div>
-<!-- https://www.youtube.com/watch?v=1I3hMwQU6GU -->
 {% endblock %}

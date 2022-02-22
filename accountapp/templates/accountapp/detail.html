@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+
+<div style="max-width: 500px; text-align: center; margin: 4rem auto">
+    <p>{{target_user.date_joined}}</p>
+    <p>{{target_user.username}}</p>
+    {% if target_user == user%} 
+    <a href={% url 'accountapp:update' pk=user.pk%}>
+        <p>
+            Update Information
+        </p>
+    </a>
+    {%endif%} 
+</div>
+
+{% endblock %}
