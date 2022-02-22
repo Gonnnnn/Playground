@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path
 from .views import *
+from django.contrib.auth.views import LoginView, LogoutView
 
 # 127:00..../account/... 와 같이 접근하는 것은 번거로운 일.
 # app_name:url_name으로 위의 주소를 반환시켜주는 함수가 존재한다. 그래서 app name등을 지정해주는 것
@@ -22,5 +23,8 @@ from .views import *
 app_name = 'accountapp'
 
 urlpatterns = [
-    path('', hello_world, name='hello_world'),
+    path('hello_world/', hello_world, name='hello_world'),
+    path('login/', LoginView.as_view(template_name='accountapp/login.html'), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('create/', AccountCreateView.as_view(), name='create'),
 ]
