@@ -9,14 +9,14 @@
     {% if not user.is_authenticated %}
     <a href="{%url 'accountapp:create'%}">
       <span>SignUp</span>
-    <a href="{%url 'accountapp:login'%}?next={{request.path}}">
+    <a href="{%url 'accountapp:login'%}">
       <span>LogIn</span>
     </a>
     {% else %}
     <a href="{%url 'accountapp:detail' pk=user.pk %}">
       <span>MyPage</span>
     </a>
-    <a href="{%url 'accountapp:logout'%}?next={{request.path}}">
+    <a href="{%url 'accountapp:logout'%}">
       <span>LogOut</span>
     </a>
     {% endif %}

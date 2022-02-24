@@ -2,8 +2,26 @@
 
 <div style="max-width: 500px; text-align: center; margin: 4rem auto">
     <p>{{target_user.date_joined}}</p>
-    <p>{{target_user.username}}</p>
+   
+    {% if target_user.profile %}
+        {% if target_user.profile.image%}
+            <img src="{{target_user.profile.image.url}}" style="height: 8rem; width: 8rem; border-radius: 8rem; margin-bottom: 1rem;">
+        {% else %}
+            <h4>No Photo</h4>
+        {% endif %}
+        <div style="margin-bottom: 2rem;">
+            <h2>{{target_user.profile.nickname}} <h6> </h6></h2>
+            <h5>{{target_user.profile.message}}</h4>
+        </div>
+    {% else %}
+    <h2>No Profile</h2>
+    {% endif %}
+
     {% if target_user == user%} 
+    <a href= {% url 'profileapp:update' pk=target_user.profile.pk %}>
+        <p>{% if target_user.profile %}Edit{% else %}Create{% endif %} Profile</p>
+    </a>
+
     <a href={% url 'accountapp:update' pk=user.pk%}>
         <p>
             Update Information
